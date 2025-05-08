@@ -1,3 +1,18 @@
+sensor:
+  port: "COM3"
+  baudrate: 9600
+  timeout: 2
+  read_interval: 10  # seconds
+
+thresholds:
+  pm25_warning: 35.4  # EPA "Moderate" AQI threshold
+  pm10_warning: 154
+  ratio_combustion: 0.7
+  ratio_dust: 0.3
+
+api:
+  purpleair_key: "your_api_key_here"  # Optional for external data
+=======
 # config.yml
 sensor:
   port: "COM3"

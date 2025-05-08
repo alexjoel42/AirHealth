@@ -1,0 +1,9 @@
+# .gitignore
+# Ignore Python cache and virtualenvs
+__pycache__/
+*.py[cod]
+venv/
+
+# Ignore sensitive files
+config.yml  # (if it has API keys)
+.env
