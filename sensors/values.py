@@ -1,13 +1,17 @@
 from .sensor_input import SensorReader
+from config import load_config
+
+config = load_config()
 
 class AirQualityAnalyzer(SensorReader):
     def analyze_source(self, pm25, pm10):
         ratio = pm25 / pm10
-        if ratio >= 0.7:
-            return 'Combustion', ratio
-        elif 0.3 <= ratio < 0.7:
+        if ratio >= config["thresholds"]["ratio_combustion"]:
+            return "Combustion", ratio
+        elif ratio <= config["thresholds"]["ratio_dust"]:
+            return "Dust", ratio
+        else:
             return 'Mixed', ratio
-        return 'Dust', ratio
 
     def get_reading(self):
         pm25, pm10 = self.read_pm_values()
